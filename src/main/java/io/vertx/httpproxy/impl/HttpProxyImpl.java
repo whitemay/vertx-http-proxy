@@ -326,6 +326,12 @@ public class HttpProxyImpl implements HttpProxy {
         public HttpClientRequest setFollowRedirects(boolean followRedirects) {
           return this;
         }
+
+        @Override
+        public HttpClientRequest setMaxRedirects(int i) {
+          throw new UnsupportedOperationException();
+        }
+
         @Override
         public HttpClientRequest setChunked(boolean chunked) {
           throw new UnsupportedOperationException();

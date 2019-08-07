@@ -1,4 +1,3 @@
-.vertx
 .DS_Store
 .gradle
 .idea
@@ -14,12 +13,10 @@ out
 *.ipr
 *.iws
 test-output
-Scratch.java
-ScratchTest.java
 test-results
 test-tmp
 *.class
-ScratchPad.java
-src/main/resources/ext-js/*.js
-src/main/java/io/vertx/java/**/*.java
 *.swp
+/gradle/wrapper/gradle-wrapper.jar
+/gradlew
+/gradlew.bat

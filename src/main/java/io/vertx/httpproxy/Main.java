@@ -3,22 +3,21 @@ package io.vertx.httpproxy;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import io.netty.util.internal.logging.InternalLoggerFactory;
-import io.netty.util.internal.logging.Slf4JLoggerFactory;
+import io.netty.util.internal.logging.Log4J2LoggerFactory;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpClient;
 import io.vertx.core.http.HttpClientOptions;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerOptions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author <a href="mailto:julien@julienviet.com">Julien Viet</a>
  */
 public class Main {
 
-  private static final Logger log = LoggerFactory.getLogger(Main.class);
+  private static final Logger log = LogManager.getLogger(Main.class);
 
   @Parameter(names = "--port")
   public int port = 8080;
@@ -34,7 +33,7 @@ public class Main {
   }
 
   public void run() {
-    InternalLoggerFactory.setDefaultFactory(Slf4JLoggerFactory.INSTANCE);
+    InternalLoggerFactory.setDefaultFactory(Log4J2LoggerFactory.INSTANCE);
     log.info("Here");
     Vertx vertx = Vertx.vertx();
     HttpClient client = vertx.createHttpClient(new HttpClientOptions()
