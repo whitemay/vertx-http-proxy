@@ -34,7 +34,12 @@ repositories {
 }
 
 group = 'cn.foperate'
-version = '0.0.1'
+version = '0.0.2'
+
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/kotlin'
+    main.java.srcDirs += 'src/main/java'
+}
 
 application {
     mainClassName = 'io.vertx.core.Launcher'
@@ -48,13 +53,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$kotlinxVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$kotlinxVersion"
 
     implementation "io.vertx:vertx-core:$vertxVersion"
     implementation "io.vertx:vertx-web:$vertxVersion"
     implementation "io.vertx:vertx-mysql-client:$vertxVersion" // 还是技术预览状态，暂时不用
-    implementation "io.vertx:vertx-rx-java2:$vertxVersion"
     implementation "io.vertx:vertx-lang-kotlin:$vertxVersion"
     implementation "io.vertx:vertx-lang-kotlin-coroutines:$vertxVersion"
 

@@ -1,5 +1,6 @@
 package io.vertx.httpproxy;
 
+import cn.foperate.httpproxy.HttpProxy;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;

@@ -1,5 +1,6 @@
 package io.vertx.httpproxy;
 
+import cn.foperate.httpproxy.HttpProxy;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import io.vertx.core.MultiMap;

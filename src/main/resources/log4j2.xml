@@ -29,7 +29,7 @@
                 hostName : 本地机器名
                 hostAddress : 本地ip地址 -->
             <PatternLayout
-                    pattern="${PATTERN}" />
+                    pattern="${PATTERN}" charset="UTF-8" />
         </Console>
 
         <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->

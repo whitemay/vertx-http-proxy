@@ -1,9 +1,8 @@
-package cn.httpproxy
+package cn.foperate.httpproxy
 
 import com.beust.jcommander.JCommander
 import com.beust.jcommander.Parameter
 import io.vertx.core.Vertx
-import cn.foperate.httpproxy.MainVerticle
 import io.netty.util.internal.logging.InternalLoggerFactory
 import io.netty.util.internal.logging.Log4J2LoggerFactory
 import io.vertx.core.logging.LoggerFactory
@@ -20,12 +19,11 @@ object Main {
     @JvmStatic
     fun main(args:Array<String>) {
 
-        log.info("I am here")
+        InternalLoggerFactory.setDefaultFactory(Log4J2LoggerFactory.INSTANCE)
+
         val jc = JCommander(Main)
         jc.parse(*args)
-        log.info(Main.toString())
 
-        InternalLoggerFactory.setDefaultFactory(Log4J2LoggerFactory.INSTANCE)
         Vertx.vertx().deployVerticle(MainVerticle(port))
     }
 }
