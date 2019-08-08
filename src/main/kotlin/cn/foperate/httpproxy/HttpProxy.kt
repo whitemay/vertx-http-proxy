@@ -17,6 +17,7 @@ class HttpProxy(val client:HttpClient, val port:Int, val host:String): Handler<R
             resp.setStatusCode(cRes.statusCode())
             resp.headers().addAll(cRes.headers())
             resp.setChunked(true)
+            // FIXME 在KeepAlive的Request模式下，会不会产生错误？还不能确定。
             cRes.pipeTo(resp)
             cRes.endHandler{
                 resp.end()

@@ -2,18 +2,14 @@ package cn.foperate.httpproxy
 
 import io.netty.util.internal.logging.InternalLoggerFactory
 import io.netty.util.internal.logging.Log4J2LoggerFactory
-import io.vertx.core.http.HttpClientOptions
 import io.vertx.core.http.HttpServerOptions
-import io.vertx.kotlin.core.http.listenAwait
-import io.vertx.kotlin.coroutines.CoroutineVerticle
 import io.vertx.core.logging.Log4j2LogDelegateFactory
 import io.vertx.core.logging.Logger
 import io.vertx.core.logging.LoggerFactory
 import io.vertx.ext.web.Router
-import io.vertx.kotlin.core.deployVerticleAwait
 import io.vertx.kotlin.core.http.httpClientOptionsOf
-import kotlin.math.max
-
+import io.vertx.kotlin.core.http.listenAwait
+import io.vertx.kotlin.coroutines.CoroutineVerticle
 
 /****
  * It is a simple HTTP reverse proxy, served for only one server.
