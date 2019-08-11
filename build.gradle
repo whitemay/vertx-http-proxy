@@ -16,11 +16,13 @@ buildscript {
 }
 
 plugins {
-    id 'java'
-    id "org.jetbrains.kotlin.jvm" version "1.3.41"
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'java-library'
+    //id "org.jetbrains.kotlin.jvm" version "1.3.41"
+    id "org.jetbrains.kotlin.jvm"
+    //id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'com.github.johnrengelman.shadow'
     id 'idea'
-    id 'application'
+    //id 'application'
 }
 
 /* kotlin 1.3的协程已经不是试验功能了 */
@@ -56,14 +58,17 @@ dependencies {
 
     implementation "io.vertx:vertx-core:$vertxVersion"
     implementation "io.vertx:vertx-web:$vertxVersion"
+    implementation "io.vertx:vertx-redis-client:$vertxVersion"
     implementation "io.vertx:vertx-mysql-client:$vertxVersion" // 还是技术预览状态，暂时不用
     implementation "io.vertx:vertx-lang-kotlin:$vertxVersion"
     implementation "io.vertx:vertx-lang-kotlin-coroutines:$vertxVersion"
 
+    compileOnly "io.vertx:vertx-codegen:$vertxVersion"
+
     implementation "commons-codec:commons-codec:1.11"
     implementation "com.google.guava:guava:27.0.1-jre"
     implementation "org.apache.logging.log4j:log4j-core:2.12.0"
-    implementation "org.apache.logging.log4j:log4j-api:2.12.0"
+    //implementation "org.apache.logging.log4j:log4j-api:2.12.0"
     implementation 'log4j:log4j:1.2.17'
     implementation 'com.alibaba:fastjson:1.2.59'
 
@@ -104,9 +109,9 @@ test {
     }
 }
 
-run {
+/*run {
     args = ['run', mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$mainClassName", "--on-redeploy=$doOnChange"]
-}
+}*/
 
 /*task wrapper(type: Wrapper) {
     gradleVersion = "5.5.1"

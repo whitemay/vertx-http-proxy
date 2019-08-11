@@ -10,11 +10,11 @@ import kotlin.coroutines.CoroutineContext
 class HttpFilter(context: CoroutineContext): Handler<RoutingContext>,
         CoroutineScope by CoroutineScope(context) {
     override fun handle(event: RoutingContext) {
-        launch { handler(event) }
+        launch { handlerAwait(event) }
     }
 
 
-    private suspend fun handler(event: RoutingContext) {
+    private suspend fun handlerAwait(event: RoutingContext) {
         /*****
          * 处理逻辑：
          * 1、首先判断请求中是否包含token cookie，

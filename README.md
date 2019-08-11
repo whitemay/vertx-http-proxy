@@ -5,3 +5,7 @@ A HTTP reverse proxy based on Vert.x, it aims to implement the reverse proxy log
 It is really in early status. I think Vert.x didnot have proxy example is reasonable. It is really simple using basic component.
 
 But... of course it is not the final destination of this project. More on the way...
+
+## Redis Session Store
+
+An implementation of Vert.x session store using redis was included in this project.
