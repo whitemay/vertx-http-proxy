@@ -22,14 +22,8 @@ plugins {
     id "org.jetbrains.kotlin.jvm"
     //id 'com.github.johnrengelman.shadow' version '5.1.0'
     id 'com.github.johnrengelman.shadow'
-    id 'idea'
     //id 'application'
 }
-
-/* kotlin 1.3的协程已经不是试验功能了 */
-/*kotlin {
-  experimental.coroutines = org.jetbrains.kotlin.gradle.dsl.Coroutines.ENABLE
-}*/
 
 repositories {
     mavenLocal()
