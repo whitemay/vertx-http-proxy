@@ -51,17 +51,10 @@
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
     <Loggers>
         <!-- 第三方日志系统 -->
-        <logger name="org.springframework.core" level="info" />
-        <logger name="org.springframework.beans" level="info" />
-        <logger name="org.springframework.context" level="info" />
-        <logger name="org.springframework.web" level="info" />
-        <logger name="org.jboss.netty" level="warn" />
-        <logger name="org.apache.http" level="warn" />
-
-        <logger name="io.netty" level="warn" />
+        <logger name="io.netty" level="WARN" />
 
         <!-- 配置日志的根节点 -->
-        <root level="all">
+        <root level="DEBUG">
             <appender-ref ref="Console"/>
             <!--<appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileWarn"/>

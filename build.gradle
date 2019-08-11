@@ -4,6 +4,7 @@ buildscript {
         kotlinxVersion = '1.2.2'
         vertxVersion = '3.8.0'
         junitJupiterEngineVersion = '5.2.0'
+        log4jVersion = '2.12.0'
     }
 
     repositories {
@@ -67,9 +68,10 @@ dependencies {
 
     implementation "commons-codec:commons-codec:1.11"
     implementation "com.google.guava:guava:27.0.1-jre"
-    implementation "org.apache.logging.log4j:log4j-core:2.12.0"
+    implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
     //implementation "org.apache.logging.log4j:log4j-api:2.12.0"
-    implementation 'log4j:log4j:1.2.17'
+    implementation "org.apache.logging.log4j:log4j-jul:$log4jVersion"
+    //implementation 'log4j:log4j:1.2.17'
     implementation 'com.alibaba:fastjson:1.2.59'
 
     implementation 'com.beust:jcommander:1.48'
@@ -95,11 +97,13 @@ tasks.withType(KotlinCompile).all {
 shadowJar {
     classifier = 'all' // 表示在打包的最后加上all后缀
     manifest {
+        attributes 'Main-Class': 'io.vertx.core.Launcher'
         attributes 'Main-Verticle': mainVerticleName
     }
     mergeServiceFiles {
         include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
     }
+    archiveName("proxy-all.jar")
 }
 
 test {
