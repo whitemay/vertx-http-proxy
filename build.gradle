@@ -31,7 +31,7 @@ repositories {
 }
 
 group = 'cn.foperate'
-version = '0.0.2'
+version = '0.0.4'
 
 sourceSets {
     main.kotlin.srcDirs += 'src/main/kotlin'
