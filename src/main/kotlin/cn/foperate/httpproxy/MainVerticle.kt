@@ -15,13 +15,20 @@ import io.vertx.kotlin.coroutines.CoroutineVerticle
  * It is a simple HTTP reverse proxy, served for only one server.
  * 2 ways to start it: as an application or as a verticle.
  */
-class MainVerticle(val port:Int): CoroutineVerticle() {
+class MainVerticle(var port:Int): CoroutineVerticle() {
+
+    private val backHost = System.getenv("BACK_SERVER") ?: "127.0.0.1"
+    private val backPort = System.getenv("BACK_PORT") ?: "80"
 
     // Launcher过程要重入两次才生效。目前看来在这里设置日志是最佳的选择。
     init {
         // Start log to log4j2, but launch still using log4j.
         System.setProperty("vertx.logger-delegate-factory-class-name", Log4j2LogDelegateFactory::class.java.name)
         LoggerFactory.initialise()
+
+        if (backPort!="80") {
+            log.error("设置了服务端口")
+        }
     }
 
     // 这里是为了与用Main启动兼容
@@ -39,7 +46,7 @@ class MainVerticle(val port:Int): CoroutineVerticle() {
 
         val router = Router.router(vertx)
         router.route().handler(HttpFilter(coroutineContext))
-        router.route().handler(HttpProxy(client, 80, "127.0.0.1"))
+        router.route().handler(HttpProxy(client, backPort.toInt(), backHost))
         val proxyServer = vertx.createHttpServer(HttpServerOptions()
                 .setPort(port)
                 .setMaxInitialLineLength(10000)
