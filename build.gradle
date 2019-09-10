@@ -2,7 +2,7 @@ buildscript {
     ext {
         kotlinVersion = '1.3.50'
         kotlinxVersion = '1.2.2'
-        vertxVersion = '3.8.0'
+        vertxVersion = '3.8.1'
         junitJupiterEngineVersion = '5.2.0'
         log4jVersion = '2.12.0'
     }
@@ -39,7 +39,8 @@ sourceSets {
 }
 
 application {
-    mainClassName = 'io.vertx.core.Launcher'
+    // mainClassName = 'io.vertx.core.Launcher'
+    mainClassName = 'cn.foperate.httpproxy.Main'
 }
 
 def mainVerticleName = 'cn.foperate.httpproxy.MainVerticle'
@@ -60,6 +61,9 @@ dependencies {
 
     compileOnly "io.vertx:vertx-codegen:$vertxVersion"
 
+    implementation 'io.netty:netty-tcnative-boringssl-static:2.0.25.Final'
+    implementation 'io.netty:netty-transport-native-epoll:4.1.39.Final:linux-x86_64'
+
     implementation "commons-codec:commons-codec:1.11"
     implementation "com.google.guava:guava:27.0.1-jre"
     implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
@@ -74,8 +78,7 @@ dependencies {
     testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitJupiterEngineVersion")
 }
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-tasks.withType(KotlinCompile).all {
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 //compileKotlin {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -91,7 +94,7 @@ tasks.withType(KotlinCompile).all {
 shadowJar {
     classifier = 'all' // 表示在打包的最后加上all后缀
     manifest {
-        attributes 'Main-Class': 'io.vertx.core.Launcher'
+        attributes 'Main-Class': mainClassName
         attributes 'Main-Verticle': mainVerticleName
     }
     mergeServiceFiles {

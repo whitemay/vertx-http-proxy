@@ -51,7 +51,7 @@
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
     <Loggers>
         <!-- 第三方日志系统 -->
-        <logger name="io.netty" level="WARN" />
+        <logger name="io.netty" level="ERROR" />
 
         <!-- 配置日志的根节点 -->
         <root level="DEBUG">
