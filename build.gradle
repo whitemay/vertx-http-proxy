@@ -91,6 +91,14 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     }
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+        attributes 'Main-Verticle': mainVerticleName
+    }
+    archiveName("proxy.jar")
+}
+
 shadowJar {
     classifier = 'all' // 表示在打包的最后加上all后缀
     manifest {
@@ -117,3 +125,8 @@ test {
 /*task wrapper(type: Wrapper) {
     gradleVersion = "5.5.1"
 }*/
+
+task copyJars(type: Copy, group: "build"){
+    from configurations.runtimeClasspath
+    into "build/libs"
+}
